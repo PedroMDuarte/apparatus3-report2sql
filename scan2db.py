@@ -141,13 +141,13 @@ if __name__ == "__main__":
         db_create_reports_table( cur )
 
         #cur.execute("INSERT INTO Writers(Name) VALUES('Truman Capote')")
+        nprocessed = 0
+        reports_inserted = 0
+        tables_created = 0 
+        keys_updated = 0 
 
         for rootdir, dirs, files in sortedWalk( args.DIR ):
             print "...Looking in ",rootdir
-            nprocessed = 0
-            reports_inserted = 0
-            tables_created = 0 
-            keys_updated = 0 
  
             sys.stdout.flush() 
             for basename in files:
@@ -191,9 +191,10 @@ if __name__ == "__main__":
                         print " =>",nprocessed,"reports processed, ", reports_inserted,"reports inserted to db, ",
                         print tables_created,"tables created, ", keys_updated,"keys_updated"
 
-            print "Totals:" 
-            print " =>",nprocessed,"reports processed, ", reports_inserted,"reports inserted to db, ",
-            print tables_created,"tables created, ", keys_updated,"keys_updated"
+        keys_updated = 0 
+        print "Totals:" 
+        print " =>",nprocessed,"reports processed, ", reports_inserted,"reports inserted to db, ",
+        print tables_created,"tables created, ", keys_updated,"keys_updated"
         
            
       
