@@ -191,7 +191,6 @@ if __name__ == "__main__":
                         print " =>",nprocessed,"reports processed, ", reports_inserted,"reports inserted to db, ",
                         print tables_created,"tables created, ", keys_updated,"keys_updated"
 
-        keys_updated = 0 
         print "Totals:" 
         print " =>",nprocessed,"reports processed, ", reports_inserted,"reports inserted to db, ",
         print tables_created,"tables created, ", keys_updated,"keys_updated"
