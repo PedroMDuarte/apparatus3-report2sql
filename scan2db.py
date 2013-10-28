@@ -11,6 +11,7 @@ from configobj import ConfigObj
 from sortedWalk import sortedWalk  
 import datetime
 absstart = datetime.datetime( 1903, 12, 31, 18, 00, 00 )
+import re
 
 def db_insert_report( cur, created, lastmod, shot ):
     cur.execute("SELECT * FROM reports WHERE \
@@ -160,7 +161,10 @@ if __name__ == "__main__":
                         print "Could not load report %s" % reportpath
                         continue
                    
-                     
+                    report_regex = re.compile("report[0-9]{4}.INI")
+                    if report_regex.match( basename ) is None:
+                        continue
+ 
                     shot = int( basename.split('.')[0].split('report')[1] )
                     timefmt = '%Y-%m-%d %H:%M:%S'
                     lastmod = time.strftime(timefmt, time.gmtime(os.path.getmtime(reportpath)))
